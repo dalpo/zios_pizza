@@ -25,12 +25,11 @@ defmodule ZiosPizza.Pizza.RouterTest do
     res = Jason.decode!(conn.resp_body)
 
     assert Enum.count(res) == 2
+
     assert Enum.all?(res, fn p ->
-      p.name
-      |> String.downcase()
-      |> String.starts_with?("mar")
-    end)
-
+             p["name"]
+             |> String.downcase()
+             |> String.starts_with?("mar")
+           end)
   end
-
 end
